@@ -2,19 +2,43 @@
 
 ### # DESAFIO:
 
-Em uma tela terá um formulário dinâmico com alguns campos predefinidos, conforme o arquivo JSON disponível no link ([https://floating-mountain-50292.herokuapp.com/cells.json](https://floating-mountain-50292.herokuapp.com/cells.json)) que deverá
-  ser consumido. Este formulário terá de ser desenhado e exibir uma tela de sucesso quando as informações preenchidas estiverem corretas.
+1 - Tela 
 
-Na segunda tela terá o detalhe de um ativo financeiro. As informações devem ser consumidas através do link ([https://floating-mountain-50292.herokuapp.com/fund.json](https://floating-mountain-50292.herokuapp.com/fund.json)).
+Tela de login, o campo de login deve aceitar cpf ou email, realizando a validação do mesmo 
 
-O visual do aplicativo está em anexo no arquivo telas.png e em um arquivo do [Sketch](https://www.sketchapp.com) (30 dias grátis, caso não tenha a licença).
+O campo de senha deve validar se a senha tem pelo menos uma letra maiuscula, um caracter especial e um caracter alphanumerico, tambem deve ser validada.
 
-![Image](https://floating-mountain-50292.herokuapp.com/telas.png)
+apos validado com sucesso devera realizar login no endpoint:
 
+request
+{
+user: "asd"
+password: "asd"
+}
+
+response
+{
+conta: 2112
+saldo: 23232
+cartoes: asdfas
+data: "2013-05-12"
+segmento: legal 
+}
+
+os dados de retorno devem ser exibidos na segunda tela
+
+2 - Tela 
+
+a cor da tela deve se basear no segmento do usuário
+Formatar o campo de agencia e conta 
+Formatar o campo de saldo na moeda brasileira 
+formatar a data 
 
 ### # Avaliação
 
 Você será avaliado pela usabilidade, por respeitar o design e pela arquitetura do app. É esperado que você consiga explicar as decisões que tomou durante o desenvolvimento através de commits.
+
+Obrigatórios:
 
 * Swift 3.0 ou superior
 * Autolayout
@@ -30,46 +54,6 @@ Você será avaliado pela usabilidade, por respeitar o design e pela arquitetura
 * O sketch está na proporção do iPhone 6, para iPhones menores/maiores é indicado que os espaçamentos se adaptem proporcionalmente.
 * Na tela Fundos, o botão baixar irá abrir um SafariViewController no [google.com](http://google.com).
 * A fonte a ser utilizada está em anexo no repositório.
-
-### # Como interpretar o cells.json:
-
-```Swift
-Enum Type {
-    case field = 1,
-    case text = 2,
-    case image = 3,
-    case checkbox = 4,
-    case send = 5
-}
-```
-
-```Swift
-Enum TypeField {
-    case text = 1,
-    case telNumber = 2,
-    case email = 3
-}
-```
-
-`"type":` tipo da célula;
-
-`"message":` mensagem que vai aparecer na label para type = text ou placeholder para field;
-
-`typeField":` tipo do field a ser exibido, para exibir corretamente a validação daquele campo.
-
-`hidden":` indica se o campo está visível;
-
-`topSpacing":` espaçamento entre o topo da célula e o topo da label/field/ checkbox;
-
-`show":` indica o campo que será exibido quando este campo for selecionado. No caso é o id do campo a ser exibido.
-
-`type":` "send" esse botão irá validar todas informações que foram preenchidas e ir para a tela de sucesso quando tudo tiver ok;
-
-`risk":` pode ser um int de 1 a 5
-
-O tipo `text` a validação é digitou alguma coisa, já ficou válido.<br>
-Para "telNumber" o campo deve ser formatado `(##) ####-#### || (##) #####-####` e validado de acordo.<br>
-Para "email" o email deve ser válido.
 
 ### # Observações gerais
 
